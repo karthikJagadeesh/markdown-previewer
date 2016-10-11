@@ -1,35 +1,32 @@
-/* color: #E8FFFF */
 
 .textarea {
-    min-width: 600px;
-    max-width: 600px;
-    min-height: 400px;
-    background-color: #E8FFFF;
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 540px;
+    background-color: #F8FFFF;
     padding: 20px;
-}
-.preview {
-    color: white;
-    min-width: 600px;
-    max-width: 600px;
-    min-height: 400px;
 }
 
 #markdown {
+    display: inline-block;
     float: left;
-    margin-left: 5%;
     margin-bottom: 20px;
+    margin-left: 5%;
 }
 #preview {
-    float:left;
+    color: white;
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 400px;
     margin-left: 5%;
+    display: inline-block;;
+    float:left;
     padding: 20px;
-    background-color: #E8FFFF;
+    background-color: #F8FFFF;
     color: #444;
 }
 #heading {
     text-align: center;
-    color: #E8FFFF;
-}
-#app {
-
+    color: #F8FFFF;
+    letter-spacing: 2px;
 }
