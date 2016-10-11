@@ -1,21 +1,86 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Remarkable from 'remarkable'
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+class Markdown extends Component {
+    constructor() {
+        super()
+        this.changeText = this.changeText.bind(this)
+    }
+
+    changeText(e) {
+        this.props.handleChange(e.target.value)
+    }
+
+    render() {
+        return (
+            <div id="markdown">
+                <textarea
+                    onChange={this.changeText}
+                    className="textarea"
+                    value={this.props.value} />
+            </div>
+        )
+    }
 }
 
-export default App;
+class Preview extends Component {
+    constructor() {
+        super()
+        this.createMarkup = this.createMarkup.bind(this)
+    }
+
+    createMarkup() {
+        const md = new Remarkable()
+        return {
+            __html: md.render(this.props.text)
+        }
+    }
+
+    render() {
+        return (
+            <div
+                id="preview"
+                className="preview"
+                dangerouslySetInnerHTML={this.createMarkup()} />
+        )
+    }
+}
+
+class Heading extends Component {
+    render() {
+        return (
+            <div id="heading">
+                <h1>Markdown Previewer</h1>
+            </div>
+        )
+    }
+}
+
+class App extends Component {
+    constructor(props) {
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+        this.state = {
+            text: 'hello'
+        }
+    }
+
+    handleChange(value) {
+        this.setState({
+            text: value
+        })
+    }
+
+    render() {
+        return (
+            <div id="app">
+                <Heading />
+                <Markdown handleChange={this.handleChange} value={this.state.text}/>
+                <Preview text={this.state.text}/>
+            </div>
+        )
+    }
+}
+
+export default App
