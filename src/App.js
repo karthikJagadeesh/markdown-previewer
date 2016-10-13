@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Remarkable from 'remarkable'
 import './App.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 class Markdown extends Component {
     constructor() {
@@ -16,8 +17,10 @@ class Markdown extends Component {
         return (
             <div id="markdown">
                 <textarea
+                    rows="22"
+                    cols="50"
                     onChange={this.changeText}
-                    className="textarea"
+                    id="textarea"
                     value={this.props.value} />
             </div>
         )
@@ -41,18 +44,7 @@ class Preview extends Component {
         return (
             <div
                 id="preview"
-                className="preview"
                 dangerouslySetInnerHTML={this.createMarkup()} />
-        )
-    }
-}
-
-class Heading extends Component {
-    render() {
-        return (
-            <div id="heading">
-                <h1>Markdown Previewer</h1>
-            </div>
         )
     }
 }
@@ -109,11 +101,16 @@ Spain.
 
     render() {
         return (
-            <div id="app">
-                <Heading />
-                <Markdown handleChange={this.handleChange} value={this.state.text}/>
-                <Preview text={this.state.text}/>
-            </div>
+                <div id="app" className="row">
+                    <div className="col-sm-6 text-center">
+                        <h3 className="miniHeaders">Write Markdown here</h3>
+                        <Markdown handleChange={this.handleChange} value={this.state.text}/>
+                    </div>
+                    <div className="col-sm-6 text-center" id="enclosingPreview">
+                    <h3 className="miniHeaders">Preview</h3>
+                        <Preview text={this.state.text}/>
+                    </div>
+                </div>
         )
     }
 }

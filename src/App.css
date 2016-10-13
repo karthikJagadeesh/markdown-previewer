@@ -1,32 +1,24 @@
 
-.textarea {
-    min-width: 400px;
-    max-width: 400px;
-    min-height: 540px;
-    background-color: #F8FFFF;
+#textarea {
     padding: 20px;
-}
-
-#markdown {
-    display: inline-block;
-    float: left;
-    margin-bottom: 20px;
-    margin-left: 5%;
+    resize: vertical;
+    height: 100%;
 }
 #preview {
     color: white;
-    min-width: 400px;
-    max-width: 400px;
-    min-height: 400px;
-    margin-left: 5%;
-    display: inline-block;;
-    float:left;
     padding: 20px;
     background-color: #F8FFFF;
     color: #444;
+    text-align: left;
+}
+#enclosingPreview {
+    width: 450px;
 }
 #heading {
     text-align: center;
     color: #F8FFFF;
     letter-spacing: 2px;
+}
+.miniHeaders {
+    color: #F8FFFF;
 }
